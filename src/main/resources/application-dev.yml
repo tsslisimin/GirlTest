@@ -1,0 +1,9 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /girl
+girl:
+  name: tss1
+  age: 28
+  sex: man
+mycontext: "name is ${girl.name},age is ${girl.age},sex is ${girl.sex}"

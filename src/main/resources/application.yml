@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: prod
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+
+  jpa:
+    hibernate:
+      #create 每次程序执行的时候表如果存在则会把原有的表结构删掉重新创建一个表，update则是更新
+      ddl-auto: update
+    show-sql: true
