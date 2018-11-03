@@ -59,9 +59,21 @@ public class GirlContorller {
      * @param girlSex
      * @return
      */
-    @PutMapping(value = "/girls/{id}")
-    public DataSourceGirl girlUpdate(@PathVariable("id") Integer girlId,@RequestParam("name") String girlName,
-                                     @RequestParam("age") Integer girlAge,@RequestParam("sex") String girlSex){
+//    @PutMapping(value = "/girls/{id}")
+//    public DataSourceGirl girlUpdate(@PathVariable("id") Integer girlId,@RequestParam("name") String girlName,
+//                                     @RequestParam("age") Integer girlAge,@RequestParam("sex") String girlSex){
+//        DataSourceGirl dataSourceGirl = new DataSourceGirl();
+//        dataSourceGirl.setSex(girlSex);
+//        dataSourceGirl.setName(girlName);
+//        dataSourceGirl.setAge(girlAge);
+//        dataSourceGirl.setId(girlId);
+//
+//        return girlRespository.save(dataSourceGirl);
+//    }
+
+    @PostMapping(value = "/girls/update/{id}")
+    public  DataSourceGirl girlUpdate(@PathVariable("id") Integer girlId,@RequestParam("name") String girlName,
+                                      @RequestParam("age") Integer girlAge,@RequestParam("sex") String girlSex){
         DataSourceGirl dataSourceGirl = new DataSourceGirl();
         dataSourceGirl.setSex(girlSex);
         dataSourceGirl.setName(girlName);
@@ -75,7 +87,13 @@ public class GirlContorller {
      * delete方式删除某一个用户
      * @param girlId
      */
-    @DeleteMapping(value = "/girls/{id}")
+//    @DeleteMapping(value = "/girls/{id}")
+//    public void  girlDelete(@PathVariable("id") Integer girlId){
+//        girlRespository.deleteById(girlId);
+//    }
+
+
+    @GetMapping(value = "/girls/del/{id}")
     public void  girlDelete(@PathVariable("id") Integer girlId){
         girlRespository.deleteById(girlId);
     }
@@ -104,5 +122,11 @@ public class GirlContorller {
     @PostMapping(value = "girls/two")
     public void Two(){
         girlService.insertTwo();
+    }
+
+
+    @GetMapping(value = "/girls/findName/{name}")
+    public List<DataSourceGirl> findNameLike(@PathVariable("name") String girlName){
+        return girlRespository.findByNameLike('%'+girlName+'%');
     }
 }

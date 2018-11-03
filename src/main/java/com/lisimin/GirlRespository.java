@@ -11,4 +11,7 @@ public interface GirlRespository extends JpaRepository<DataSourceGirl,Integer> {
     public List<DataSourceGirl> findByName(String name);
 
     public  List<DataSourceGirl> findBySex(String sex);
+
+    public  List<DataSourceGirl> findByNameLike(String name);
+
 }
